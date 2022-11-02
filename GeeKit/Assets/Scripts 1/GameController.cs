@@ -2,51 +2,79 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject _panel;
-    [SerializeField] private Button _buttonPlay;
+    
     [SerializeField] private GameObject[] _players;
     [SerializeField] private GameObject _playerDice;
+    [SerializeField] private GameObject _enemyDice;
     private EnemyDiceRoll _diceRoll;
-    private EnemyDiceController EnemyDiceController;
-    public TMP_Text _hpText;
     [SerializeField] private Transform _startPosition;
-    //private EnemyObject _enemyObject;
+    [SerializeField] private Transform _enemyStartPosition;
+    public static int _rollCount;
+    public static bool isFighted = false;
 
-    public void Awake()
-    {
-        PlayerDiceSpown();
-    }
+    [Header("UI")]
+    [SerializeField] private Button _buttonPlay;
+    [SerializeField] private TextMeshProUGUI _rollCountText;
+    [SerializeField] public Button _rollButton;
+    [SerializeField] private Button _fightButton;
+    public GameObject _panelNewRound;
+  
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-        _diceRoll = FindObjectOfType<EnemyDiceRoll>().GetComponent<EnemyDiceRoll>();
-        _panel.SetActive(true);
+        _rollCount = 2;
+        _fightButton.interactable = false;
+        _rollButton.interactable = false;
+        _panelNewRound.SetActive(false);
         _buttonPlay.GameObject().SetActive(true);
-        EnemyDiceController = FindObjectOfType<EnemyDiceController>().GetComponent<EnemyDiceController>();
     }
 
-    // Update is called once per frame
+    public void Update()
+    {
+        _rollCountText.text = "x " + _rollCount.ToString();
+        if (_rollCount == 0)
+        {
+            _rollButton.interactable = false;
+            _fightButton.interactable = true;
+        }
+        else if(_rollCount == 1)
+        {
+            _fightButton.interactable = true;
+        }
+        if (isFighted)
+        {
+            _rollButton.interactable = false;
+            _fightButton.interactable = false;
+        }
+    }
+
     public void PlayGame()
     {
-        _panel.SetActive(false);
+        _diceRoll = FindObjectOfType<EnemyDiceRoll>().GetComponent<EnemyDiceRoll>();
         _buttonPlay.GameObject().SetActive(false);
         _diceRoll.DiceRollButton();
-        StartCoroutine(EnemyDiceController.WaitTwoSeconds());
-        EnemyDiceController.isRolled = true;
+        StartCoroutine(WaitTwoSeconds());
+        if (_panelNewRound.activeSelf) _panelNewRound.SetActive(false);
     }
 
     public void PlayerDiceSpown()
     {
-        GameObject fff = Instantiate(_playerDice, _startPosition, false);
-        Debug.Log("FFF " + fff.name + fff.transform.position);
+        GameObject playerTemp = Instantiate(_playerDice, _startPosition, false);
     }
 
+    public void EnemyDiceSpown()
+    {
+        GameObject enemyTemp = Instantiate(_enemyDice, _enemyStartPosition, false);
+    }
 
+    public IEnumerator WaitTwoSeconds()
+    {
+        yield return new WaitForSeconds(2);
+    }
 
 
 }

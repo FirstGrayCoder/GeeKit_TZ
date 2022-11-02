@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2346024601767734250}
   - component: {fileID: 2346024601767734251}
   - component: {fileID: 2346024601767734248}
-  - component: {fileID: 2346024601767734167}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -105,19 +104,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7193849918037988991, guid: 8d400ad96dc116647b0dfeba5b490335, type: 3}
---- !u!114 &2346024601767734167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2346024601767734254}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 809c3c4fe21f151439470b61818a1de9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPosition2: {fileID: 0}
 --- !u!1 &2346024602237957575
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +116,7 @@ GameObject:
   - component: {fileID: 2346024602237957573}
   m_Layer: 0
   m_Name: Side5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +161,7 @@ GameObject:
   - component: {fileID: 2346024602349822043}
   m_Layer: 0
   m_Name: Side2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,7 +206,7 @@ GameObject:
   - component: {fileID: 2346024602482058017}
   m_Layer: 0
   m_Name: Side1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +252,7 @@ GameObject:
   - component: {fileID: 5363661291464964424}
   m_Layer: 0
   m_Name: PlayerDice
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,15 +264,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2346024602711707788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2346024601767734249}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!54 &3421195482649394317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -328,7 +314,7 @@ GameObject:
   - component: {fileID: 2346024603310678904}
   m_Layer: 0
   m_Name: Side6
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +359,7 @@ GameObject:
   - component: {fileID: 2346024603414999054}
   m_Layer: 0
   m_Name: Side4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +404,7 @@ GameObject:
   - component: {fileID: 2346024603629183334}
   m_Layer: 0
   m_Name: Side3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,33 +4,39 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class EnemyObject: MonoBehaviour
 {
-    public static int demage = 5;
+    public static int enemyDemage = 5;
+    private int _enemyHPMax = 100;
     private int _enemyHP = 100;
-    public Slider sliderHP;
-    public Slider sliderArmor;
-    public static int armor = 0;
-    public TMP_Text _hpText;
-    public TMP_Text _armorText;
-    public TMP_Text _levelText;
+    
+    private int armorMax = 100;
+    private int armor = 100;
+
     [SerializeField] private int _numOfLevels = 12;
     [SerializeField] private GameObject _winPanel;
 
+    [Header("UI")]
+    public TMP_Text _hpText;
+    public TMP_Text _armorText;
+    public TMP_Text _levelText;
+    public Slider sliderHP;
+    public Slider sliderArmor;
+
+   
+
     public void Start()
     {
+        sliderHP.maxValue = _enemyHPMax;
         sliderHP.value = _enemyHP;
+        sliderArmor.maxValue = armorMax;
+        sliderArmor.value = armor;
     }
-    public void DemageFromPlayer()
+    public void DemageFromPlayer(int demage)
     {
-        if (sliderHP.value > 0)
-        {
-            if (armor > 0)
-                armor -= PlayerObject._demage;
-            else
-                sliderHP.value -= PlayerObject._demage;
-        }
+        if (sliderArmor.value > 0) sliderArmor.value -= demage;
+        else sliderHP.value -= demage;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (sliderHP.value <= 0)
         {
@@ -38,10 +44,7 @@ public class EnemyObject: MonoBehaviour
             _levelText.text = "level " + SceneManager.GetActiveScene().buildIndex.ToString() + "/" + _numOfLevels;
         }
         
-        _hpText.text = sliderHP.value.ToString() + "/" + sliderHP.maxValue.ToString();
-        _armorText.text = sliderArmor.value.ToString() + "/" + sliderArmor.maxValue.ToString();
+        _hpText.text = sliderHP.value.ToString() + "/" + _enemyHPMax.ToString();
+        _armorText.text = sliderArmor.value.ToString() + "/" + armorMax.ToString();
     }
-
-
-
 }

@@ -6,24 +6,29 @@ public class PlayerDiceController : MonoBehaviour
 {
     Vector3 diceVelocity;
     public GameObject[] _skills;
-    public static bool isRolled = false;
+    [SerializeField] public static bool isRolled = false;
+    public bool isRolledCopy;
 
-    void FixedUpdate()
+    public void Start()
+    {
+        isRolledCopy = isRolled;
+    }
+
+    void Update()
     {
         diceVelocity = PlayerDicerRoll.diceVelocity;
-        
+        isRolledCopy = isRolled;
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if (diceVelocity.x == 0 && diceVelocity.y == 0 && diceVelocity.z == 0 && isRolled == true)
+        if (diceVelocity.x == 0 && diceVelocity.y == 0 && diceVelocity.z == 0 && isRolled == true )
         {
-            isRolled = false;
             switch (other.gameObject.name)
             {
                 case "Side1":
                     _skills[5].SetActive(true);
-                    isRolled = false;
+                    isRolled = false ;
                     break;
                 case "Side2":
                     _skills[4].SetActive(true);
